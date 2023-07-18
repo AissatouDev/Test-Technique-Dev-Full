@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="text-center m-3">
+    <h2>Création client</h2>
+  </div>
+  <form [formGroup]="clientFormGroup" (ngSubmit)="saveCustomer()">
+    <div class="mb-3">
+      <label for="nom">Nom</label>
+      <input id="nom" type="text" class="form-control" formControlName="nom">
+    </div>
+    <small *ngIf="clientFormGroup.get('nom').invalid && (clientFormGroup.get('nom').dirty || clientFormGroup.get('nom').touched)">
+      <span class="text-danger" *ngIf="clientFormGroup.get('nom').errors['required']">Le nom est obligatoire</span>
+    </small>
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input id="email" type="text" class="form-control" formControlName="email">
+    </div>
+    <small *ngIf="clientFormGroup.get('email').invalid && (clientFormGroup.get('email').dirty || clientFormGroup.get('email').touched)">
+      <span class="text-danger" *ngIf="clientFormGroup.get('email').errors['required']">L'email est obligatoire</span>
+    </small>
+    <div class="mb-3">
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" class="form-control" formControlName="phone">
+    </div>
+    <small *ngIf="clientFormGroup.get('phone').invalid && (clientFormGroup.get('phone').dirty || clientFormGroup.get('phone').touched)">
+      <span class="text-danger" *ngIf="clientFormGroup.get('phone').errors['required']">Le téléphone est obligatoire</span>
+    </small>
+    <div class="mb-3">
+      <label>Statut</label>
+      <select formControlName="status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option value="Actif">Actif</option>
+        <option value="Inactif">Inactif</option>
+      </select>
+      <small *ngIf="clientFormGroup.get('status').invalid && (clientFormGroup.get('status').dirty || clientFormGroup.get('status').touched)">
+        <span class="text-danger" *ngIf="clientFormGroup.get('status').errors['required']">Le statut est obligatoire</span>
+      </small>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button type="submit" [disabled]="clientFormGroup.invalid" class="btn btn-success btn-lg">Ajouter</button>
+      </div>
+      <div class="col-md-6">
+        <button routerLink="/clients" class="btn btn-danger btn-lg">Annuler</button>
+      </div>
+  </div>
+  </form>
+</div>

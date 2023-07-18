@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="text-center m-3">
+    <h2>Modification client</h2>
+  </div>
+  <div *ngIf="clientFormGroup">
+    <form [formGroup]="clientFormGroup" (ngSubmit)="updateCustomer()">
+      <div class="mb-3">
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" class="form-control" formControlName="nom">
+      </div>
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input id="email" type="text" class="form-control" formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label for="phone">Phone</label>
+        <input id="phone" type="text" class="form-control" formControlName="phone">
+      </div>
+      <div class="mb-3">
+        <label>Statut</label>
+        <select formControlName="status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option selected>cliquez pour sélectionner un statut</option>
+          <option value="Actif">Actif</option>
+          <option value="Inactif">Inactif</option>
+        </select>
+      </div>
+      <div class="row">
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-success btn-lg">Modifier</button>
+          </div>
+          <div class="col-md-6">
+            <button routerLink="/clients" class="btn btn-danger btn-lg">Annuler</button>
+          </div>
+      </div>
+    </form>
+  </div>
+
+</div>

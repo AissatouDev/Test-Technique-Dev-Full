@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="text-center m-3">
+    <h1>Gestion client</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-lg-4">
+      <input class="form-control" type="text" [(ngModel)]="nom" placeholder="Rechercher" (ngModelChange)="onSearch()">
+    </div>
+    <div class="col-md-4 col-lg-2 offset-md-2 offset-lg-6">
+      <button class="btn btn-success" routerLink="/client-add">Ajouter client</button>
+    </div>
+  </div>
+  <ng-container *ngIf="clients && clients.length > 0; else noDataMessage">
+    <table class="table table-bordered mt-3">
+      <thead>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cl of clients">
+          <td>{{cl.nom}}</td>
+          <td>{{cl.email}}</td>
+          <td>{{cl.phone}}</td>
+          <td>{{cl.status}}</td>
+          <td>
+            <button class="btn btn-outline-info mr-2" (click)="onEdit(cl)">Modifier</button>
+            <button class="btn btn-outline-danger" (click)="onDelete(cl)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #noDataMessage>
+    <div class="alert alert-info mt-5" role="alert">
+      Pas de données disponibles!
+    </div>
+  </ng-template>
+</div>
